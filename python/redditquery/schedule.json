@@ -1,0 +1,9 @@
+{
+    "schedule": [
+        {
+            "command":["python3","datacollector.py","config.json"],
+            "interval":600,
+            "dir":null
+        }
+    ]
+}

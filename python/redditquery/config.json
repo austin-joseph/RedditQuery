@@ -1,0 +1,24 @@
+{
+    "reddit": {
+        "client_id": "XVbDoK4K5m9vjg",
+        "client_secret": "_IFN_xP_VCNMG07k_kKvyFt8Iqs",
+        "username": "ASB2",
+        "password": "hihowareyou",
+        "user_agent": "desktop:com.asb2.datascience:v2"
+    },
+    "target": {
+        "subreddit": "all",
+        "rate": "day"
+    },
+    "database": {
+        "user": "redditquery",
+        "password": "redditquery",
+        "host": "redditquery_database",
+        "database": "redditquery"
+    },
+    "logging": {
+        "log_to_console": true,
+        "log_to_file":false,
+        "log_file_path":"output.log"
+    }
+}
