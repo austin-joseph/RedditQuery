@@ -5,5 +5,8 @@
             "interval":600,
             "dir":null
         }
-    ]
+    ],
+    "logging":{
+        "log_timing":false
+    }
 }

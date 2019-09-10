@@ -32,15 +32,22 @@ def updateDatabase(submission):
     cursor.close()
 
 
-if len(sys.argv) != 2:
-    print("The program expects a config file as the first and only argument. You can find documentation on how to open the config file in the README.txt file in the root directory of the project.")
+if len(sys.argv) != 3:
+    print("Required Args: config.json auth.json")
     exit()
 
 with open(sys.argv[1]) as configHandle:
     configFile = json.load(configHandle)
 
+with open(sys.argv[2]) as authHandle:
+    authFile = json.load(configHandle)
+
 if configFile == None:
     print("Error loading config file aborting")
+    exit()
+
+if authFile == None:
+    print("Error loading auth file aborting")
     exit()
 
 PROGRAM_NAME = "redditquery_datacollector"
@@ -55,20 +62,18 @@ if configFile["logging"]["log_to_file"]:
         configFile["logging"]["log_file_path"]))
 
 if len(handlers) > 0:
-    logging.basicConfig(handlers=handlers,
-                        format='%(levelname)s:%(message)s', level=logging.INFO)
+    logging.basicConfig(handlers=handlers, format='%(levelname)s:%(message)s', level=logging.INFO)
 
 logging.info("Started %s at %s", PROGRAM_NAME, str(datetime.datetime.now().timestamp()))
 
-reddit = praw.Reddit(client_id=configFile["reddit"]["client_id"],
-                     client_secret=configFile["reddit"]["client_secret"],
-                     password=configFile["reddit"]["password"],
-                     user_agent=configFile["reddit"]["user_agent"],
-                     username=configFile["reddit"]["username"])
+reddit = praw.Reddit(client_id=authFile["reddit"]["client_id"],
+                     client_secret=authFile["reddit"]["client_secret"],
+                     user_agent=authFile["reddit"]["user_agent"])
 
 subreddit = reddit.subreddit(configFile["target"]["subreddit"])
 
-cnx = mysql.connector.connect(**configFile["database"])
+authInformation = dict(authFile["database"] + configFile["database"])
+cnx = mysql.connector.connect(**authInformation)
 
 if cnx != None:
 
