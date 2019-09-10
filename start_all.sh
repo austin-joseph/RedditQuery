@@ -1,5 +1,5 @@
 cd database
 ./start.sh
 cd ..
-cd python
+cd runtime
 ./start.sh

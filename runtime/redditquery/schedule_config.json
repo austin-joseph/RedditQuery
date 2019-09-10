@@ -3,7 +3,7 @@
         {
             "command":["python3","datacollector.py","config.json", "auth.json"],
             "interval":600,
-            "dir":"/datacollector"
+            "dir":"datacollector"
         }
     ],
     "logging":{

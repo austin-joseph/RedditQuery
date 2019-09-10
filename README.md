@@ -29,11 +29,11 @@ Docker Version: 18.09.7, build 2d0083d
 ```
 If you wish to run the runtime outside of its Docker container
 ```
-Python Version: 3.8.0b4-buster (https://www.python.org/downloads/)
-Praw Version: 6.3.1 (pip install praw)
-MySQL-Connector-Python Version: 8.0.17(pip install mysql-connector-python)
-Pandas Version: 0.24.2 (pip install pandas)
-Schedule Version: 0.6.0 (pip install schedule)
+Python Version: 3.7.4-buster (https://www.python.org/downloads/)
+Praw Version: 6.3.1 (pip install praw==6.3.1)
+MySQL-Connector-Python Version: 8.0.17(pip install mysql-connector-python==8.0.17)
+Pandas Version: 0.24.2 (pip install pandas==0.24.2)
+Schedule Version: 0.6.0 (pip install schedule==0.6.0)
 ```
 
 ### Technical Description
