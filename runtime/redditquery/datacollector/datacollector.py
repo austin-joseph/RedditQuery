@@ -15,14 +15,14 @@ def uploadToDatabase(submission):
 		if submission.subreddit != None:
 			subreddit_id = submission.subreddit.id
 	except AttributeError as e:
-		print("Error getting submission_id for post with id" + str(submission.id))
+		print("Error getting submission_id for post with id " + str(submission.id) + " and link " + submission.url+"\"")
 		print(e)
 
 	try:
 		if submission.author != None:
 			author_id = submission.author.id
 	except AttributeError as e:
-		print("Error getting author_id for post with id" + str(submission.id))
+		print("Error getting author_id for post with id " + str(submission.id) + " and link \"" + submission.url+"\"")
 		print(e)
 
 	query_data = (submission.id, subreddit_id, author_id, submission.score, submission.upvote_ratio, submission.created_utc,datetime.datetime.now().timestamp(),
@@ -34,10 +34,8 @@ def uploadToDatabase(submission):
 
 
 def updateDatabase(submission):
-	# datetime.datetime.now().timestamp()
 	query = ("UPDATE all_top_day (score, vote_ratio, num_comments, over_18, grab_time) WHERE post_id = %s VALUES (%s, %s, %s, %s, %s)")
-	query_data = (submission.score, submission.upvote_ratio,
-	              submission.num_comments, submission.over_18, submission.id, datetime.datetime.now().timestamp())
+	query_data = (submission.id, submission.score, submission.upvote_ratio, submission.num_comments, submission.over_18, datetime.datetime.now().timestamp())
 	cursor = cnx.cursor()
 	cursor.execute(query, query_data)
 	cnx.commit()
