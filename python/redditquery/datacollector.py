@@ -40,7 +40,7 @@ with open(sys.argv[1]) as configHandle:
     configFile = json.load(configHandle)
 
 with open(sys.argv[2]) as authHandle:
-    authFile = json.load(configHandle)
+    authFile = json.load(authHandle)
 
 if configFile == None:
     print("Error loading config file aborting")
@@ -72,11 +72,11 @@ reddit = praw.Reddit(client_id=authFile["reddit"]["client_id"],
 
 subreddit = reddit.subreddit(configFile["target"]["subreddit"])
 
-authInformation = dict(authFile["database"] + configFile["database"])
+authInformation = dict(**authFile["database"], **configFile["database"])
 cnx = mysql.connector.connect(**authInformation)
 
 if cnx != None:
-
+    cnx.set_charset_collation(charset='utf8mb4', collation='utf8mb4_bin')
     top_day = subreddit.top(
     time_filter=configFile["target"]["rate"], limit=1000)
     cursor = cnx.cursor()
