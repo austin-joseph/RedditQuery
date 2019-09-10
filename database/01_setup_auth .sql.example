@@ -1,0 +1,9 @@
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';
+
+CREATE USER 'user'@'%' IDENTIFIED BY 'user';
+GRANT ALL PRIVILEGES ON *.* TO 'user'@'%';
+
+CREATE USER 'redditquery'@'%' IDENTIFIED BY 'redditquery';
+GRANT ALL PRIVILEGES ON redditquery.* TO 'redditquery'@'%';
+
+FLUSH PRIVILEGES;
