@@ -1,0 +1,13 @@
+FROM python:3.8.0b4-buster
+
+RUN pip install praw && \
+pip install mysql-connector-python && \
+pip install pandas && \
+pip install schedule
+
+COPY redditquery /usr/bin/redditquery
+RUN chmod +x /usr/bin/redditquery/run.sh
+WORKDIR /usr/bin/redditquery
+ENTRYPOINT ./run.sh
+
+

@@ -1,0 +1,12 @@
+{
+    "schedule": [
+        {
+            "command":["python3","datacollector.py","config.json", "auth.json"],
+            "interval":600,
+            "dir":"/datacollector"
+        }
+    ],
+    "logging":{
+        "log_timing":false
+    }
+}
