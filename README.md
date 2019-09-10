@@ -35,3 +35,17 @@ MySQL-Connector-Python Version: 8.0.17(pip install mysql-connector-python)
 Pandas Version: 0.24.2 (pip install pandas)
 Schedule Version: 0.6.0 (pip install schedule)
 ```
+
+### Technical Description
+
+Coming Soon
+
+
+### Planned Features
+
+Coming Soon
+
+## Authors
+
+* **[Austin Joseph](https://github.com/austinobejo)**
+
