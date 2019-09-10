@@ -1,0 +1,2 @@
+docker stop redditquery_runtime
+docker rm redditquery_runtime
