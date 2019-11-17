@@ -25,7 +25,7 @@ def uploadToDatabase(submission):
 		print("Error getting author_id for post with id " + str(submission.id) + " and link \"" + submission.url+"\"")
 		print(e)
 
-	query_data = (submission.id, subreddit_id, author_id, submission.score, submission.upvote_ratio, submission.created_utc,datetime.datetime.now().timestamp(),
+	query_data = (submission.id, subreddit_id, author_id, submission.score, submission.upvote_ratio, submission.created_utc,datetime.datetime.utcnow().timestamp(),
 	              submission.is_self, submission.selftext, submission.url, submission.title, submission.num_comments, submission.over_18)
 	cursor = cnx.cursor()
 	cursor.execute(query, query_data)
@@ -35,7 +35,7 @@ def uploadToDatabase(submission):
 
 def updateDatabase(submission):
 	query = ("UPDATE all_top_day (score, vote_ratio, num_comments, over_18, grab_time) WHERE post_id = %s VALUES (%s, %s, %s, %s, %s)")
-	query_data = (submission.id, submission.score, submission.upvote_ratio, submission.num_comments, submission.over_18, datetime.datetime.now().timestamp())
+	query_data = (submission.id, submission.score, submission.upvote_ratio, submission.num_comments, submission.over_18, datetime.datetime.utcnow().timestamp())
 	cursor = cnx.cursor()
 	cursor.execute(query, query_data)
 	cnx.commit()
@@ -74,7 +74,7 @@ if configFile["logging"]["log_to_file"]:
 if len(handlers) > 0:
 	logging.basicConfig(handlers=handlers, format='%(levelname)s:%(message)s', level=logging.INFO)
 
-logging.info("Started %s at %s", PROGRAM_NAME, str(datetime.datetime.now().timestamp()))
+logging.info("Started %s at %s", PROGRAM_NAME, str(datetime.datetime.utcnow().timestamp()))
 
 reddit = praw.Reddit(client_id=authFile["reddit"]["client_id"],
 	                 client_secret=authFile["reddit"]["client_secret"],
