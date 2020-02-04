@@ -3,3 +3,4 @@ cd database
 cd ..
 cd runtime
 ./build.sh
+docker network create redditquery
