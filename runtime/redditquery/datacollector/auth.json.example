@@ -2,10 +2,10 @@
     "reddit": {
         "client_id": "",
         "client_secret": "",
-        "user_agent": ""
+        "user_agent": "linux:redditquery:v0"
     },
     "database": {
-        "user": "",
-        "password": ""
+        "user": "redditquery",
+        "password": "redditquery"
     }
 }

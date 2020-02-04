@@ -4,7 +4,8 @@
         "rate": "day"
     },
     "database": {
-        "host": "redditquery_database",
+        "host": "localhost",
+        "port": "3306",
         "database": "redditquery"
     },
     "logging": {

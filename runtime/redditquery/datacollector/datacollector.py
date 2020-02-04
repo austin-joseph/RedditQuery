@@ -81,10 +81,12 @@ reddit = praw.Reddit(client_id=authFile["reddit"]["client_id"],
 	                 user_agent=authFile["reddit"]["user_agent"])
 
 subreddit = reddit.subreddit(configFile["target"]["subreddit"])
-
-cnx = mysql.connector.connect(host = configFile["database"]["host"], database = configFile["database"]["database"], user = authFile["database"]["user"], password = authFile["database"]["password"])
-#authInformation = dict(**authFile["database"], **configFile["database"])
-#cnx = mysql.connector.connect(**authInformation)
+# databaseAuthDict = {}
+# databaseAuthDict.update(configFile)
+# databaseAuthDict.update(authFile)
+# cnx = mysql.connector.connect(**databaseAuthDict)
+authInformation = dict(**authFile["database"], **configFile["database"])
+cnx = mysql.connector.connect(**authInformation)
 
 if cnx != None:
 	#cnx.set_charset_collation(charset='utf8mb4', collation='utf8mb4_bin')
